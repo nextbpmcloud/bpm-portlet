@@ -1,0 +1,63 @@
+6.1.2.27  14-03-2019
+--------------------
+* Permitir indicar en la URL el tenant slug con $tenant
+* Arreglar visualizacion de la configuracion
+
+6.1.2.26  02-11-2018
+--------------------
+* Enviar redirección configurable en vez de lanzar error No memento defines en Servlet. (sessionTimeoutRedirectUrl en porlet.properties)
+* Quitar * de las URLs generadas para evitar errores.
+
+6.1.2.25  25-07-2018
+--------------------
+* Codificar los parametros GET antes de enviarlos al Django.
+
+
+6.1.2.24  14-06-2018
+--------------------
+* Ya no se reescriben enlaces /static/. Esto evita errores en las traducciones de los archivos a través del bpm-portlet
+  y evita que éste sobre cargue, acelerando visiblemente la velocidad, pero requiere que esté definido el "location"
+  en la sección correspondiente del virtualhost de Sede en Nginx.
+* Evitar escribir enlaces en cabecera html (link, scripts) si pone: class="noProxy"
+
+6.1.2.23  28-05-2018
+--------------------
+
+* Se pasa ahora la cabecera X-Forwarded-URL para que TangramDT pueda
+  obtener la URL del Portal solicitada que hace falta para integración TPV
+  Además, hay que poner en el frontal:
+      proxy_set_header X-Forwarded-URL $scheme://$https_host$request_uri;
+  y en el nginx de tangramdt:
+      uwsgi_pass_header X-Forwarded-URL;
+
+6.1.2.22  07-01-2018
+--------------------
+
+* Agregar páginas de error para ocultar version tomcat.
+
+6.1.2.21  27-10-2017
+--------------------
+
+* Opción de passthrough de parámetros de query strings y POSTs y permitir filtrarlos.
+
+6.1.2.20  22-05-2017
+--------------------
+
+* Se envía ahora USER_UID en vez de USER_DNI como cookie proxyUser.
+
+6.1.2.15  20-10-2016
+--------------------
+
+* Enviar las cookies UTF-8 URL plus encoded
+
+6.1.2.14  20-10-2015
+--------------------
+
+* Hacerlo thread-safe usando ConcurrentHashMap para evitar cuelgues.
+
+
+6.1.2.13  15-09-2015
+--------------------
+
+* Cambiar cadena reemplazo por "$processdef" en URL.
+* Ahora se pueden usar param1..param5 para reemplazar partes de las URLs de destino.
